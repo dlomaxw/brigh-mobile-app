@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Save, ArrowLeft, Plus, Trash2, X } from 'lucide-react';
+import { Save, ArrowLeft, Plus, Trash2 } from 'lucide-react';
 import api from '../services/api';
 
 interface PropertyFormProps {
@@ -21,8 +21,6 @@ export default function PropertyForm({ initialData, isEdit = false }: PropertyFo
         area: '',
         bedrooms: '',
         bathrooms: '',
-        sizeSqm: '',
-        parking: '',
         sizeSqm: '',
         parking: '',
         unitTypes: '',
@@ -57,7 +55,6 @@ export default function PropertyForm({ initialData, isEdit = false }: PropertyFo
                 bedrooms: initialData.bedrooms || '',
                 bathrooms: initialData.bathrooms || '',
                 sizeSqm: initialData.sizeSqm || '',
-                parking: initialData.parking || '',
                 parking: initialData.parking || '',
                 unitTypes: initialData.unitTypes || '',
                 agentId: initialData.agentId || '', // Pre-fill agentId

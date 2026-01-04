@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Plus, Search, MapPin, Bed, Bath, Layout, Image as ImageIcon } from 'lucide-react';
+import { MapPin, Bed, Bath, Layout, Image as ImageIcon } from 'lucide-react';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 

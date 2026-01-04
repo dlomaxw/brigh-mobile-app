@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion'; // Assuming framer-motion is used based on other files
 import {
     Users, UserPlus, Search, Edit, Trash2, Shield
 } from 'lucide-react';

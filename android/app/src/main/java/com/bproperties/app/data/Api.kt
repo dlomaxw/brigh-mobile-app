@@ -95,7 +95,9 @@ interface BPropertiesApi {
 
 
     companion object {
-        private const val BASE_URL = "http://10.0.2.2:5000/api/"
+        // TODO: Replace with your Vercel URL, e.g. "https://your-app-name.vercel.app/api/"
+        // private const val BASE_URL = "http://10.0.2.2:5000/api/" // Localhost
+        private const val BASE_URL = "https://CHANGE_ME.vercel.app/api/"
         private var authToken: String? = null
 
         fun setToken(token: String?) {
