@@ -1,0 +1,8 @@
+R_DEF: Internal format may change without notice
+local
+drawable logo
+drawable splash_image
+string app_name
+style Theme.BProperties
+xml backup_rules
+xml data_extraction_rules

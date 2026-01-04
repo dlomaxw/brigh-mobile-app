@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// enum Role removed for SQLite compatibility
+
+// enum PropertyStatus removed for SQLite compatibility
+
+// enum PropertyType removed for SQLite compatibility
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  phone     String?
+  role      String   @default("USER")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  properties Property[] // Properties managed by this agent/user
+  leads      Lead[]     // Leads submitted by this user
+  favorites  Favorite[] // Favorite properties
+}
+
+model Property {
+  id          String         @id @default(uuid())
+  title       String
+  description String
+  price       Decimal
+  type        String
+  status      String @default("AVAILABLE")
+  sizeSqm     Float?
+  bedrooms    Int?
+  bathrooms   Int?
+  parking     Int?
+  unitTypes   String? // e.g., "1BHK, 2BHK, 3BHK"
+  
+  // Location
+  city        String
+  area        String
+  latitude    Float?
+  longitude   Float?
+  
+  featured    Boolean        @default(false)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  // Relations
+  agentId     String
+  agent       User           @relation(fields: [agentId], references: [id])
+  media       PropertyMedia[]
+  amenities   PropertyAmenity[]
+  leads       Lead[]
+  favoritedBy Favorite[]
+}
+
+model PropertyMedia {
+  id         String   @id @default(uuid())
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  url        String
+  type       String   // "IMAGE" | "VIDEO"
+  order      Int      @default(0)
+}
+
+model Amenity {
+  id         String            @id @default(uuid())
+  name       String            @unique
+  properties PropertyAmenity[]
+}
+
+model PropertyAmenity {
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  amenityId  String
+  amenity    Amenity  @relation(fields: [amenityId], references: [id], onDelete: Cascade)
+
+  @@id([propertyId, amenityId])
+}
+
+model Lead {
+  id         String   @id @default(uuid())
+  propertyId String?
+  property   Property? @relation(fields: [propertyId], references: [id])
+  userId     String?
+  user       User?     @relation(fields: [userId], references: [id])
+  
+  name       String
+  email      String
+  phone      String
+  message    String
+  status     String   @default("NEW") // NEW, CONTACTED, CLOSED
+  
+  createdAt  DateTime @default(now())
+}
+
+model Favorite {
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@id([userId, propertyId])
+}
