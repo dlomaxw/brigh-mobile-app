@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+// Vercel Trigger Fix 2026-01-04
 import { useNavigate } from 'react-router-dom';
 import { Save, ArrowLeft, Plus, Trash2 } from 'lucide-react';
 import api from '../services/api';
