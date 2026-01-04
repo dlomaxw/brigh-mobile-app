@@ -1,3 +1,12 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import BaseDashboardLayout from './components/Layout/BaseDashboardLayout';
+import DashboardHome from './pages/DashboardHome';
+import LeadsPage from './pages/LeadsPage';
+import UsersPage from './pages/UsersPage';
+import PropertiesPage from './pages/PropertiesPage';
+import CreatePropertyPage from './pages/CreatePropertyPage';
+import EditPropertyPage from './pages/EditPropertyPage';
+import PropertyDetailsPage from './pages/PropertyDetailsPage';
 import LoginPage from './pages/LoginPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
