@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "shinebebright-website",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "C:/Users/RAZER/Documents/bright/App/www.shinebebright.com/www.shinebebright.com"],
+      "port": 5000,
+      "autoPort": true
+    },
+    {
+      "name": "lavelle-website",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "C:/Users/RAZER/Documents/lavelle"],
+      "port": 5173,
+      "autoPort": true
+    }
+  ]
+}
